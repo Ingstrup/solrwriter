@@ -5,5 +5,3 @@ require 'writer'
 
 feeds = Reader.new.read
 Writer.new(feeds).write
-
-puts 'done'

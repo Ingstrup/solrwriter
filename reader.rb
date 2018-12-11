@@ -7,9 +7,7 @@ require 'sax-machine'
 include SAXMachine
 require 'open-uri' # for nokogiri open-method
 require 'nokogiri'
-require 'solr_input'
-require 'writer'
-require 'byebug'
+require 'model/record_list_wrapper'
 
 SAXMachine.handler = :nokogiri
 
@@ -20,7 +18,7 @@ SAXMachine.handler = :nokogiri
     doc2 = Nokogiri::XML(open(url2))
 
     # return array of feeds
-    [SolrInput.new.parse(doc1.to_xml), SolrInput.new.parse(doc2.to_xml)]
+    [RecordListWrapper.new.parse(doc1.to_xml), RecordListWrapper.new.parse(doc2.to_xml)]
   end
 end
 
