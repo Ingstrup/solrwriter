@@ -9,11 +9,15 @@ class Writer
     solr = RSolr.connect :url => 'http://localhost:8983/solr/libguides'
     documents = @feeds.map do |feed|
       feed.records.map do |record|
-        {          id: record.header.identifier,
-                title: record.metadata.title,
-          description: record.metadata.description,
-                 date: record.metadata.date.gsub(" ", "T").concat("Z"),
-             set_spec: record.header.set_spec
+        m = record.metadata
+        h = record.header
+        {          id: h.identifier,
+                title: m.title,
+          description: m.description,
+            publisher: m.publisher,
+                 link: m.identifier,
+                 date: m.date.gsub(" ", "T").concat("Z"),
+             set_spec: h.set_spec
         }
       end
     end.flatten
