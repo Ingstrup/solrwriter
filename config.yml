@@ -1,0 +1,4 @@
+solr_url: 'http://localhost:8983/solr/libguides'
+docs:
+  az: 'http://libguides.dtu.dk/oai.php?verb=ListRecords&metadataPrefix=oai_dc&set=az'
+  guides: 'http://libguides.dtu.dk/oai.php?verb=ListRecords&metadataPrefix=oai_dc&set=guides'

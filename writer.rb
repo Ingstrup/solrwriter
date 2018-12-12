@@ -6,7 +6,8 @@ class Writer
   end
 
   def write
-    solr = RSolr.connect :url => 'http://localhost:8983/solr/libguides'
+    config = YAML.load_file('config.yml')
+    solr = RSolr.connect :url => config['solr_url']
     documents = @feeds.map do |feed|
       feed.records.map do |record|
         m = record.metadata
